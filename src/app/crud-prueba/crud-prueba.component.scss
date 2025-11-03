@@ -1,0 +1,51 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedor-crud {
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    margin: 20px;
+    text-align: center;
+  }
+
+  mat-card {
+    mat-form-field {
+      margin-right: 20px;
+    }
+  }
+}
+
+.custum-bci-button-primary {
+  background-color: #2772CC;
+  color: white;
+}
+
+.custom-bci-button-warning {
+  background-color: #F13D47;
+  color: white;
+}
+
+.margin-custom {
+  margin-right: 20px;
+}
+
+table {
+  width: 100%;
+  margin: 0 auto;
+
+  .mat-column-actions {
+    width: 200px;
+    text-align: center;
+  }
+}
+
+.custom-agregar {
+  color: #28892b;
+  border: 1px solid #28892b;
+}

@@ -1,0 +1,87 @@
+<div class="contenedor-crud">
+  <h1>Formulario de Usuarios con API</h1>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Ingresar Datos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="newUser.name" required>
+      </mat-form-field>
+
+      <mat-form-field >
+        <mat-label>Trabajo</mat-label>
+        <input matInput [(ngModel)]="newUser.job" required>
+      </mat-form-field>
+
+      <button mat-stroked-button class="custom-agregar" (click)="createUser()"
+        [disabled]="!newUser.name || !newUser.job">
+        Agregar
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <br>
+
+  <mat-card *ngIf="editUserObj">
+    <mat-card-header>
+      <mat-card-title>Editar datos de usuario ID: {{ editUserObj.id }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field >
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="editUserObj.name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Trabajo</mat-label>
+        <input matInput [(ngModel)]="editUserObj.job" required>
+      </mat-form-field>
+
+      <button mat-stroked-button class="custom-agregar" (click)="saveEdit()"
+        [disabled]="!editUserObj.name || !editUserObj.job">
+        Guardar Edición
+      </button>
+      <button mat-button (click)="editUserObj = null">Cancelar</button>
+    </mat-card-content>
+  </mat-card>
+
+  <br>
+
+  <h2>Lista de usuarios</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="job">
+      <th mat-header-cell *matHeaderCellDef> Trabajo </th>
+      <td mat-cell *matCellDef="let user"> {{user.job}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-raised-button class="custum-bci-button-primary margin-custom" (click)="startEdit(user)">
+          Editar
+        </button>
+        <button button mat-raised-button class="custom-bci-button-warning" (click)="deleteUser(user.id)">
+          Eliminar
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
